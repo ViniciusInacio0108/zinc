@@ -1,3 +1,4 @@
+import 'package:empregonaarea/interfaces/dependecy_injection.dart';
 import 'package:empregonaarea/utils/enviroment.dart';
 import 'package:empregonaarea/utils/themes.dart';
 import 'package:empregonaarea/features/views.dart';
@@ -8,6 +9,8 @@ final supabase = Supabase.instance.client;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  setupDependencieInjection();
 
   await Supabase.initialize(
     url: EnviromentData.SUPABASE_URL,
