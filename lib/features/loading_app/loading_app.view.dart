@@ -1,8 +1,6 @@
 import 'package:empregonaarea/features/home/home.view.dart';
-import 'package:empregonaarea/utils/svg_url.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class FirstLoadingView extends StatelessWidget {
   const FirstLoadingView({super.key});
