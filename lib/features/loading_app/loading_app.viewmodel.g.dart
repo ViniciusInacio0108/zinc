@@ -25,6 +25,24 @@ mixin _$LoadingAppViewModel on _LoadingAppViewModelBase, Store {
     });
   }
 
+  late final _$autoLoginAsyncAction =
+      AsyncAction('_LoadingAppViewModelBase.autoLogin', context: context);
+
+  @override
+  Future<bool> autoLogin(String localUserKey) {
+    return _$autoLoginAsyncAction.run(() => super.autoLogin(localUserKey));
+  }
+
+  late final _$retrieveLoginDataFromLocalStorageAsyncAction = AsyncAction(
+      '_LoadingAppViewModelBase.retrieveLoginDataFromLocalStorage',
+      context: context);
+
+  @override
+  Future<LoginParams?> retrieveLoginDataFromLocalStorage(String userKey) {
+    return _$retrieveLoginDataFromLocalStorageAsyncAction
+        .run(() => super.retrieveLoginDataFromLocalStorage(userKey));
+  }
+
   @override
   String toString() {
     return '''
