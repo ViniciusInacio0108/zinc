@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Zinc',
+      debugShowCheckedModeBanner: false,
       theme: MyThemeData.themeData(),
       home: const FirstLoadingView(),
     );
