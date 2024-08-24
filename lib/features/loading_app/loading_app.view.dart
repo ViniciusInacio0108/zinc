@@ -28,7 +28,7 @@ class _FirstLoadingViewState extends State<FirstLoadingView> {
 
     await Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const LoginView()),
+      MaterialPageRoute(builder: (context) => LoginView()),
     );
   }
 

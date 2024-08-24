@@ -1,9 +1,16 @@
 import 'package:empregonaarea/data/models/login_params.model.dart';
 import 'package:empregonaarea/services/auth/auth.service.dart';
 import 'package:mobx/mobx.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 part 'login.viewmodel.g.dart';
 
 class LoginViewModel = _LoginViewModelBase with _$LoginViewModel;
+
+enum LoginStateResponse {
+  success,
+  invalidCredentials,
+  unkownError,
+}
 
 abstract class _LoginViewModelBase with Store {
   final AuthService authService;
@@ -19,19 +26,34 @@ abstract class _LoginViewModelBase with Store {
   void setIsLoggedState({required bool value}) => isLoggedIn = value;
 
   @action
-  Future<void> login(LoginParams params) async {
-    final res = await authService.signInWithEmail(params.email, params.password);
+  Future<LoginStateResponse> login(LoginParams params) async {
+    try {
+      setIsLoggedState(value: true);
+      final res = await authService.signInWithEmail(params.email, params.password);
 
-    if (res.user == null) {
-      return;
+      if (res.user == null) {
+        return LoginStateResponse.unkownError;
+      }
+
+      return LoginStateResponse.success;
+    } on AuthException catch (err) {
+      if (err.message == "Invalid login credentials") {
+        return LoginStateResponse.invalidCredentials;
+      }
+
+      return LoginStateResponse.unkownError;
+    } finally {
+      setIsLoggedState(value: false);
     }
-
-    setIsLoggedState(value: true);
   }
 
-  @action
-  Future<void> logout() async {
-    // do the sigout method
-    setIsLoggedState(value: false);
+  String? validateEmailLogin(String? value) {
+    if (value != null && value.contains("@") && value.isNotEmpty) return null;
+    return "Digite um email válido";
+  }
+
+  String? validateEmailPassword(String? value) {
+    if (value != null && value.length >= 8) return null;
+    return "Digite uma senha";
   }
 }
