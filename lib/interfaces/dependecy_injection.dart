@@ -10,7 +10,9 @@ void setupDependencieInjection() {
 
   instance.registerLazySingleton(
     () => LoadingAppViewModel(
-      authService: AuthImp(),
+      authService: AuthImp(
+        LocalStorageServiceImp(),
+      ),
       localService: LocalStorageServiceImp(),
     ),
   );
@@ -19,7 +21,9 @@ void setupDependencieInjection() {
   );
   instance.registerLazySingleton(
     () => LoginViewModel(
-      authService: AuthImp(),
+      authService: AuthImp(
+        LocalStorageServiceImp(),
+      ),
     ),
   );
 }

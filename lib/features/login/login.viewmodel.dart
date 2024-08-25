@@ -35,6 +35,8 @@ abstract class _LoginViewModelBase with Store {
         return LoginStateResponse.unkownError;
       }
 
+      await authService.saveTokenLocally(params);
+
       return LoginStateResponse.success;
     } on AuthException catch (err) {
       if (err.message == "Invalid login credentials") {
