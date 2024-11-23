@@ -10,6 +10,6 @@ Por fim, pretendo deixar o projeto público e aberto a colaborações da comunid
 
 ## Tecnologias e etapas
 
-# Fase 1 - MOBILE - A princípio comecarei utilizando Flutter e Supabase (BaaS) para criar o MVP inicial para iOS e Android.
-# Fase 2 - BackEnd - Posteriormente pretendo migrar o backend para algo próprio criado com Java/Spring.
-# Fase 3 - WebApp - Por fim, pretendo usar o JS para criar um WebApp da versão do móvel, já utilizando o backend próprio.
+Fase 1 - MOBILE - A princípio comecarei utilizando Flutter e Supabase (BaaS) para criar o MVP inicial para iOS e Android.
+Fase 2 - BackEnd - Posteriormente pretendo migrar o backend para algo próprio criado com Java/Spring.
+Fase 3 - WebApp - Por fim, pretendo usar o JS para criar um WebApp da versão do móvel, já utilizando o backend próprio.
