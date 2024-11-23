@@ -8,6 +8,8 @@ class MyCustomTextFormField extends StatelessWidget {
     required this.keyboardType,
     required this.inputAction,
     required this.validatorFuncion,
+    this.maxLength,
+    this.maxLines,
   });
 
   final String labelText;
@@ -15,6 +17,7 @@ class MyCustomTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final TextInputAction inputAction;
   final String? Function(String?)? validatorFuncion;
+  final int? maxLines, maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,8 @@ class MyCustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       cursorColor: Colors.white,
       textInputAction: inputAction,
-      maxLength: 100,
+      maxLength: maxLength,
+      maxLines: maxLines,
       validator: validatorFuncion,
       buildCounter: (context, {required currentLength, required isFocused, required maxLength}) =>
           const SizedBox.shrink(),
