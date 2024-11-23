@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 class MyThemeData {
   static ThemeData themeData() {
     return ThemeData(
+      appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(
+        color: Colors.white,
+      )),
       bottomSheetTheme: const BottomSheetThemeData(
         dragHandleColor: const Color.fromRGBO(11, 19, 43, 1),
       ),
@@ -22,6 +26,9 @@ class MyThemeData {
           color: const Color.fromRGBO(11, 19, 43, 1),
         ),
         titleMedium: const TextStyle().copyWith(
+          color: const Color.fromRGBO(11, 19, 43, 1),
+        ),
+        titleLarge: const TextStyle().copyWith(
           color: const Color.fromRGBO(11, 19, 43, 1),
         ),
       ),
