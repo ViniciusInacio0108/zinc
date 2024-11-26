@@ -1,3 +1,4 @@
+import 'package:empregonaarea/components/custom_loading.component.dart';
 import 'package:empregonaarea/features/home/home.view.dart';
 import 'package:empregonaarea/features/loading_app/loading_app.viewmodel.dart';
 import 'package:empregonaarea/features/login/login.view.dart';
@@ -42,7 +43,9 @@ class _FirstLoadingViewState extends State<FirstLoadingView> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: CircularProgressIndicator(),
+        child: MyCustomLoading(
+          color: Colors.white,
+        ),
       ),
     );
   }
