@@ -1,5 +1,5 @@
 import 'package:empregonaarea/data/models/profile.model.dart';
-import 'package:empregonaarea/repositories/profile/profile.repository.dart';
+import 'package:empregonaarea/data/repositories/profile/profile.repository.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 part 'profile.viewmodel.g.dart';

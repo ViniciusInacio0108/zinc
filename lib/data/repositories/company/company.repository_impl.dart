@@ -1,6 +1,6 @@
 import 'package:empregonaarea/data/models/company.model.dart';
 import 'package:empregonaarea/main.dart';
-import 'package:empregonaarea/repositories/company/company.repository.dart';
+import 'package:empregonaarea/data/repositories/company/company.repository.dart';
 
 class CompanyRepositoryImpl implements CompanyRepository {
   @override

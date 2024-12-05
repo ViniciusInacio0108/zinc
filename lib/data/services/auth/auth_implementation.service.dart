@@ -1,7 +1,7 @@
 import 'package:empregonaarea/data/models/login_params.model.dart';
 import 'package:empregonaarea/main.dart';
-import 'package:empregonaarea/services/auth/auth.service.dart';
-import 'package:empregonaarea/services/local_storage/local_storage.service.dart';
+import 'package:empregonaarea/data/services/auth/auth.service.dart';
+import 'package:empregonaarea/data/services/local_storage/local_storage.service.dart';
 import 'package:empregonaarea/utils/local_storage_keys.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

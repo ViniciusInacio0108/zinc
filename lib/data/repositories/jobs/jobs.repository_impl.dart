@@ -1,6 +1,6 @@
 import 'package:empregonaarea/data/models/jobs.model.dart';
 import 'package:empregonaarea/main.dart';
-import 'package:empregonaarea/repositories/jobs/jobs.repository.dart';
+import 'package:empregonaarea/data/repositories/jobs/jobs.repository.dart';
 
 class JobsRepositoryImpl implements JobsRepository {
   @override

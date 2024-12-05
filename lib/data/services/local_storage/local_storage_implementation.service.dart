@@ -1,4 +1,4 @@
-import 'package:empregonaarea/services/local_storage/local_storage.service.dart';
+import 'package:empregonaarea/data/services/local_storage/local_storage.service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class LocalStorageServiceImp implements LocalStorageService {

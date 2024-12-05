@@ -1,4 +1,4 @@
-import 'package:empregonaarea/interfaces/dependecy_injection.dart';
+import 'package:empregonaarea/utils/dependecy_injection.dart';
 import 'package:empregonaarea/utils/enviroment.dart';
 import 'package:empregonaarea/utils/themes.dart';
 import 'package:empregonaarea/features/views.dart';

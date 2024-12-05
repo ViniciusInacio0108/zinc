@@ -1,6 +1,6 @@
 import 'package:empregonaarea/data/models/profile.model.dart';
 import 'package:empregonaarea/main.dart';
-import 'package:empregonaarea/repositories/profile/profile.repository.dart';
+import 'package:empregonaarea/data/repositories/profile/profile.repository.dart';
 
 class ProfileRepositoryImpl implements ProfileRepository {
   static const PROFILE_TABLE_NAME = "profile";

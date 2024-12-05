@@ -1,4 +1,4 @@
-import 'package:empregonaarea/repositories/jobs/jobs.repository.dart';
+import 'package:empregonaarea/data/repositories/jobs/jobs.repository.dart';
 import 'package:mobx/mobx.dart';
 part 'home.viewmodel.g.dart';
 

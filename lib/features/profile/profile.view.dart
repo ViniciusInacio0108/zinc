@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:empregonaarea/features/edit_information_profile/edit_information_profile.view.dart';
 import 'package:empregonaarea/features/profile/profile.viewmodel.dart';
-import 'package:empregonaarea/interfaces/text_mask.dart';
+import 'package:empregonaarea/utils/text_mask.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
