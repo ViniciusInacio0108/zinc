@@ -7,4 +7,8 @@ abstract class AuthService {
   Future<AuthResponse> signInWithEmail(String email, String password);
 
   Future<String> saveTokenLocally(LoginParams data);
+
+  Future<bool> logOutUser();
+
+  Future<bool> deleteLocalUserInfo();
 }

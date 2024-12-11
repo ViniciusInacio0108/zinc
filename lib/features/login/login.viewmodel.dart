@@ -24,6 +24,9 @@ abstract class _LoginViewModelBase with Store {
   @observable
   bool isLoggedIn = false;
 
+  @observable
+  bool isLoadingLogginOut = false;
+
   @action
   void setIsLoggedState({required bool value}) => isLoggedIn = value;
 
@@ -52,6 +55,19 @@ abstract class _LoginViewModelBase with Store {
     } finally {
       setIsLoggedState(value: false);
     }
+  }
+
+  @action
+  Future<bool> logOut() async {
+    isLoadingLogginOut = true;
+    final isLoggedOut = await authService.logOutUser();
+    isLoadingLogginOut = false;
+    if (!isLoggedOut) {
+      return false;
+    }
+    isLoggedIn = false;
+    await authService.deleteLocalUserInfo();
+    return true;
   }
 
   String? validateEmailLogin(String? value) {

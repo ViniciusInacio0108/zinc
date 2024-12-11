@@ -36,4 +36,24 @@ class AuthImp implements AuthService {
       data.toJson(),
     );
   }
+
+  @override
+  Future<bool> logOutUser() async {
+    try {
+      await supabase.auth.signOut(scope: SignOutScope.local);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> deleteLocalUserInfo() async {
+    try {
+      await localService.deleteAll();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
