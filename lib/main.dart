@@ -1,7 +1,7 @@
+import 'package:empregonaarea/routing/routes.dart';
 import 'package:empregonaarea/utils/dependecy_injection.dart';
 import 'package:empregonaarea/utils/enviroment.dart';
 import 'package:empregonaarea/utils/themes.dart';
-import 'package:empregonaarea/features/views.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Zinc',
       debugShowCheckedModeBanner: false,
       theme: MyThemeData.themeData(),
-      home: const FirstLoadingView(),
+      routes: MyRoutes.routes,
     );
   }
 }
