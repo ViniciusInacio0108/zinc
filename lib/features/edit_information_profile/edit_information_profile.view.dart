@@ -138,10 +138,6 @@ class _EditProfileViewState extends State<EditProfileView> {
                       inputAction: TextInputAction.done,
                       validatorFuncion: (value) {},
                     ),
-                    if (MediaQuery.of(context).viewInsets.bottom > MediaQuery.sizeOf(context).height * 0.3)
-                      const SizedBox(
-                        height: 100,
-                      ),
                   ],
                 ),
               ),

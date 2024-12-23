@@ -10,6 +10,8 @@ import 'package:empregonaarea/data/services/auth/auth_implementation.service.dar
 import 'package:empregonaarea/data/services/local_storage/local_storage_implementation.service.dart';
 import 'package:get_it/get_it.dart';
 
+import '../features/first_access/first_acces.viewmodel.dart';
+
 void setupDependencieInjection() {
   final instance = GetIt.I;
 
@@ -41,5 +43,13 @@ void setupDependencieInjection() {
 
   instance.registerLazySingleton<ProfileViewModel>(
     () => ProfileViewModel(profileRepo: ProfileRepositoryImpl()),
+  );
+
+  instance.registerLazySingleton<FirstAccessViewModel>(
+    () => FirstAccessViewModel(
+      AuthImp(
+        LocalStorageServiceImp(),
+      ),
+    ),
   );
 }

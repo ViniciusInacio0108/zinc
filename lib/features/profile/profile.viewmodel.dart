@@ -18,6 +18,9 @@ abstract class _ProfileViewModelBase with Store {
   String userIdFromAuth = "";
 
   @observable
+  String userEmail = "";
+
+  @observable
   bool isFetchingData = false;
 
   @observable
@@ -43,15 +46,17 @@ abstract class _ProfileViewModelBase with Store {
   @computed
   String get number => profile.number ?? "";
 
-  @computed
-  String get email => profile.email ?? "";
-
   @action
   Future<void> fetchUserData() async {
     isFetchingData = true;
     final res = await profileRepo.getUserData(userIdFromAuth);
     profile = res;
     isFetchingData = false;
+  }
+
+  @action
+  void setUserEmailFromLogin(String emailFromLogin) {
+    userEmail = emailFromLogin;
   }
 
   @observable

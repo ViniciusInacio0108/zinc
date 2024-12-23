@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:empregonaarea/features/edit_information_profile/edit_information_profile.view.dart';
 import 'package:empregonaarea/features/profile/profile.viewmodel.dart';
+import 'package:empregonaarea/routing/routes.dart';
 import 'package:empregonaarea/utils/text_mask.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -10,11 +10,9 @@ class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   Future<void> goToEditProfile(BuildContext context) async {
-    await Navigator.push(
+    await Navigator.pushNamed(
       context,
-      MaterialPageRoute(
-        builder: (_) => const EditProfileView(),
-      ),
+      MyRoutes.EDIT_PROFILE_SCREEN,
     );
   }
 
@@ -71,7 +69,7 @@ class ProfileView extends StatelessWidget {
                   height: 8,
                 ),
                 AutoSizeText(
-                  "Email: ${profileVM.email}",
+                  "Email: ${profileVM.userEmail}",
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white),
                 ),
               ],
