@@ -1,7 +1,6 @@
 import 'package:empregonaarea/components/custom_loading.component.dart';
-import 'package:empregonaarea/features/home/home.view.dart';
 import 'package:empregonaarea/features/loading_app/loading_app.viewmodel.dart';
-import 'package:empregonaarea/features/login/login.view.dart';
+import 'package:empregonaarea/routing/routes.dart';
 import 'package:empregonaarea/utils/local_storage_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -20,16 +19,16 @@ class _FirstLoadingViewState extends State<FirstLoadingView> {
   Future<void> _redirect() async {
     final isLogged = await loadingAppVM.autoLogin(userKey);
     if (isLogged) {
-      await Navigator.pushReplacement(
+      await Navigator.pushReplacementNamed(
         context,
-        MaterialPageRoute(builder: (context) => const HomeView()),
+        MyRoutes.HOME_SCREEN,
       );
       return;
     }
 
-    await Navigator.pushReplacement(
+    await Navigator.pushReplacementNamed(
       context,
-      MaterialPageRoute(builder: (context) => LoginView()),
+      MyRoutes.LOGIN_SCREEN,
     );
   }
 

@@ -3,8 +3,8 @@ import 'package:empregonaarea/components/custom_elevated_button.component.dart';
 import 'package:empregonaarea/components/custom_modal.component.dart';
 import 'package:empregonaarea/components/custom_text_form.component.dart';
 import 'package:empregonaarea/data/models/login_params.model.dart';
-import 'package:empregonaarea/features/home/home.view.dart';
 import 'package:empregonaarea/features/login/login.viewmodel.dart';
+import 'package:empregonaarea/routing/routes.dart';
 import 'package:empregonaarea/utils/svg_url.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -40,13 +40,18 @@ class LoginView extends StatelessWidget {
                 title: "Atenção!")
             .showModal(context);
         return;
+      } else if (loginResponseStatus == LoginStateResponse.emailNotConfirmed) {
+        const MyCustomFeedbackModal(
+                bodyMessage:
+                    "Email não foi confirmado. Por favor, vá até seu email e confirme que ele é realmente seu.",
+                title: "Atenção!")
+            .showModal(context);
+        return;
       }
 
-      Navigator.pushReplacement(
+      Navigator.pushReplacementNamed(
         context,
-        MaterialPageRoute(
-          builder: (context) => const HomeView(),
-        ),
+        MyRoutes.HOME_SCREEN,
       );
     }
   }
@@ -116,6 +121,20 @@ class LoginView extends StatelessWidget {
                         isActivated: true,
                         label: "Entrar",
                       ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    MyCustomElevatedButton(
+                      isActivated: true,
+                      onPressed: () async {
+                        await Navigator.pushNamed(
+                          context,
+                          MyRoutes.FIRST_ACCESS_SCREEN,
+                        );
+                      },
+                      isSecondaryStyle: true,
+                      label: "Criar conta",
+                    ),
                   ],
                 ),
               ),

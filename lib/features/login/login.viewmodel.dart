@@ -12,6 +12,7 @@ enum LoginStateResponse {
   success,
   invalidCredentials,
   unkownError,
+  emailNotConfirmed,
 }
 
 abstract class _LoginViewModelBase with Store {
@@ -44,11 +45,14 @@ abstract class _LoginViewModelBase with Store {
       await authService.saveTokenLocally(params);
       profileVM.setUserIdFromAuth(res.user!.id);
       await profileVM.fetchUserData();
+      profileVM.setUserEmailFromLogin(res.user?.email ?? "");
 
       return LoginStateResponse.success;
     } on AuthException catch (err) {
       if (err.message == "Invalid login credentials") {
         return LoginStateResponse.invalidCredentials;
+      } else if (err.message == "Email not confirmed") {
+        return LoginStateResponse.emailNotConfirmed;
       }
 
       return LoginStateResponse.unkownError;
