@@ -6,32 +6,51 @@ class MyCustomElevatedButton extends StatelessWidget {
     super.key,
     required this.isActivated,
     required this.onPressed,
+    this.isSecondaryStyle,
+    this.isLoading = false,
     required this.label,
   });
 
   final void Function()? onPressed;
   final bool isActivated;
+  final bool? isSecondaryStyle;
   final String label;
+  final bool? isLoading;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: isActivated ? onPressed : null,
+      onPressed: isActivated
+          ? onPressed
+          : isLoading == true
+              ? () {}
+              : null,
       style: ElevatedButton.styleFrom(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: isSecondaryStyle == true ? Theme.of(context).colorScheme.primary : Colors.white,
         disabledBackgroundColor: Theme.of(context).colorScheme.onPrimary,
         shape: RoundedRectangleBorder(
+          side: const BorderSide(
+            color: Colors.white,
+          ),
           borderRadius: BorderRadius.circular(8),
         ),
         minimumSize: const Size(double.infinity, 50),
       ),
-      child: AutoSizeText(
-        label,
-        style: const TextStyle().copyWith(
-          color: Theme.of(context).colorScheme.primary,
-        ),
-      ),
+      child: (isLoading == true)
+          ? const SizedBox.shrink(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            )
+          : AutoSizeText(
+              label,
+              style: const TextStyle().copyWith(
+                color: isSecondaryStyle == true
+                    ? Theme.of(context).colorScheme.secondary
+                    : Theme.of(context).colorScheme.primary,
+              ),
+            ),
     );
   }
 }
