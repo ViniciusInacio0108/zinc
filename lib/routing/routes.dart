@@ -3,6 +3,7 @@ import 'package:empregonaarea/features/first_access/first_access.view.dart';
 import 'package:empregonaarea/features/home/home.view.dart';
 import 'package:empregonaarea/features/loading_app/loading_app.view.dart';
 import 'package:empregonaarea/features/login/login.view.dart';
+import 'package:empregonaarea/features/onboarding/onboarding.view.dart';
 import 'package:flutter/material.dart';
 
 class MyRoutes {
@@ -12,6 +13,7 @@ class MyRoutes {
     EDIT_PROFILE_SCREEN: (_) => const EditProfileView(),
     FIRST_ACCESS_SCREEN: (_) => const FirstAccesView(),
     LOGIN_SCREEN: (_) => LoginView(),
+    ONBOARDING_SCREEN: (_) => OnboardingView(),
   };
 
   static const LOADING_SCREEN = "/";
@@ -19,4 +21,5 @@ class MyRoutes {
   static const EDIT_PROFILE_SCREEN = "/edit-profile";
   static const FIRST_ACCESS_SCREEN = "/fist-access";
   static const LOGIN_SCREEN = "/login";
+  static const ONBOARDING_SCREEN = "/onboarding";
 }

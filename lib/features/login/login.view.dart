@@ -19,41 +19,47 @@ class LoginView extends StatelessWidget {
   final loginFormKey = GlobalKey<FormState>();
   final loginVM = GetIt.I.get<LoginViewModel>();
 
-  void validateForm(BuildContext context) async {
-    if (loginFormKey.currentState?.validate() == true) {
-      loginFormKey.currentState?.save();
-      final loginResponseStatus = await loginVM.login(
-        LoginParams(
-          email: emailController.text.toLowerCase(),
-          password: passwordController.text.toLowerCase(),
-        ),
-      );
+  Future<void> logIN(BuildContext context) async {
+    if (loginFormKey.currentState?.validate() != true) {
+      return;
+    }
 
-      if (loginResponseStatus == LoginStateResponse.unkownError) {
-        const MyCustomFeedbackModal(
-                bodyMessage: "Erro desconhecido ao tentar entrar. Por favor, tente novamente.", title: "Atenção!")
-            .showModal(context);
-        return;
-      } else if (loginResponseStatus == LoginStateResponse.invalidCredentials) {
-        const MyCustomFeedbackModal(
-                bodyMessage: "Senha ou email informados estão incorretos. Por favor, tente novamente.",
-                title: "Atenção!")
-            .showModal(context);
-        return;
-      } else if (loginResponseStatus == LoginStateResponse.emailNotConfirmed) {
-        const MyCustomFeedbackModal(
-                bodyMessage:
-                    "Email não foi confirmado. Por favor, vá até seu email e confirme que ele é realmente seu.",
-                title: "Atenção!")
-            .showModal(context);
-        return;
-      }
+    loginFormKey.currentState?.save();
+    final loginResponseStatus = await loginVM.login(
+      LoginParams(
+        email: emailController.text.toLowerCase(),
+        password: passwordController.text.toLowerCase(),
+      ),
+    );
 
+    if (loginResponseStatus == LoginStateResponse.unkownError) {
+      const MyCustomFeedbackModal(
+              bodyMessage: "Erro desconhecido ao tentar entrar. Por favor, tente novamente.", title: "Atenção!")
+          .showModal(context);
+      return;
+    } else if (loginResponseStatus == LoginStateResponse.invalidCredentials) {
+      const MyCustomFeedbackModal(
+              bodyMessage: "Senha ou email informados estão incorretos. Por favor, tente novamente.", title: "Atenção!")
+          .showModal(context);
+      return;
+    } else if (loginResponseStatus == LoginStateResponse.emailNotConfirmed) {
+      const MyCustomFeedbackModal(
+              bodyMessage: "Email não foi confirmado. Por favor, vá até seu email e confirme que ele é realmente seu.",
+              title: "Atenção!")
+          .showModal(context);
+      return;
+    } else if (loginVM.isFirstUserLogin) {
       Navigator.pushReplacementNamed(
         context,
-        MyRoutes.HOME_SCREEN,
+        MyRoutes.ONBOARDING_SCREEN,
       );
+      return;
     }
+
+    Navigator.pushReplacementNamed(
+      context,
+      MyRoutes.HOME_SCREEN,
+    );
   }
 
   @override
@@ -117,7 +123,7 @@ class LoginView extends StatelessWidget {
                       )
                     else
                       MyCustomElevatedButton(
-                        onPressed: () async => validateForm(context),
+                        onPressed: () async => logIN(context),
                         isActivated: true,
                         label: "Entrar",
                       ),

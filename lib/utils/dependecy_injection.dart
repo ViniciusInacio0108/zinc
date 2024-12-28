@@ -2,6 +2,7 @@ import 'package:empregonaarea/features/detailed_job/detailed_job.viewmodel.dart'
 import 'package:empregonaarea/features/home/home.viewmodel.dart';
 import 'package:empregonaarea/features/loading_app/loading_app.viewmodel.dart';
 import 'package:empregonaarea/features/login/login.viewmodel.dart';
+import 'package:empregonaarea/features/onboarding/onboarding.viewmodel.dart';
 import 'package:empregonaarea/features/profile/profile.viewmodel.dart';
 import 'package:empregonaarea/data/repositories/company/company.repository_impl.dart';
 import 'package:empregonaarea/data/repositories/jobs/jobs.repository_impl.dart';
@@ -51,5 +52,9 @@ void setupDependencieInjection() {
         LocalStorageServiceImp(),
       ),
     ),
+  );
+
+  instance.registerLazySingleton<OnboardingViewModel>(
+    () => OnboardingViewModel(),
   );
 }
